@@ -19,8 +19,8 @@ The Home Screen contains several buttons. These represent planets, satellites, a
 </div>
 
 ## Objects
-These are the objects. They hover and spins. You can swipe to change the spin direction. 
-After spinning to the directed direction, they stos and restart spinning passively. 
+These are the objects. They hover and spin. You can swipe to change the spin direction. 
+After spinning to the directed way, they stop and restart spinning passively. 
 
 ### Moon
 <div align="left">
