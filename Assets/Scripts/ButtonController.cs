@@ -5,7 +5,10 @@ public class ButtonController : MonoBehaviour
 {
     public GameObject definedButton;
     public UnityEvent OnClick = new UnityEvent();
-    public Color color;
+    public Color activeColor;
+    public Color passiveColor;
+
+    private bool buttonActive = false;
 
     private void Start()
     {
@@ -23,15 +26,35 @@ public class ButtonController : MonoBehaviour
 
     private void Update()
     {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit Hit;
-
-        if (Input.touchCount > 0 || Input.GetMouseButton(0))
+        if (Input.touchCount > 0)
         {
-            if (Physics.Raycast(ray, out Hit) && Hit.collider.gameObject == gameObject)
+            Touch touch = Input.GetTouch(0);
+            Ray ray = Camera.main.ScreenPointToRay(touch.position);
+            RaycastHit hit;
+
+            switch (touch.phase)
             {
-                ChangeButtonColor(color);
-                OnClick.Invoke();
+                case TouchPhase.Began:
+                    if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject)
+                    {
+                        buttonActive = true;
+                        ChangeButtonColor(activeColor);
+                    }
+                    else
+                    {
+                        buttonActive = false;
+                        ChangeButtonColor(passiveColor);
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                    if (buttonActive && Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject)
+                    {
+                        OnClick.Invoke();
+                    }
+                    buttonActive = false;
+                    ChangeButtonColor(passiveColor);
+                    break;
             }
         }
     }

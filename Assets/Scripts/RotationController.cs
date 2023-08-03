@@ -20,7 +20,7 @@ public class RotationController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount == 1)
         {
             touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Moved)
