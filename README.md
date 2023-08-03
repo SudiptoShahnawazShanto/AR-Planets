@@ -18,9 +18,28 @@ The Home Screen contains several buttons. These represent planets, satellites, a
   <br>
 </div>
 
+## Movement
+The objects hover and spin. You can zoom, move, and rotate it. 
+
+### Zoom, Move, Rotate
+You can pinch the screen to zoom in and out and change the object's size.
+Use 2 fingers to move the object. Use 1 finger to rotate it manually in the X and Y direction.
+After spinning towards the directed way, it stops and restarts spinning passively. 
+
+<div align="left">
+  <img src="GitHub/ZoomMoveRotate.gif" alt="ZoomMoveRotate" width="30%" />
+  <br>
+</div>
+
+### Hovering
+The object hovers at a fixed spot even if you move away or towards it.
+<div align="left">
+  <img src="GitHub/Moving.gif" alt="Moving" width="30%" />
+  <br>
+</div>
+
 ## Objects
-These are the objects. They hover and spin. You can swipe to change the spin direction. 
-After spinning to the directed way, they stop and restart spinning passively. 
+These are the objects (Planets, stars, and satellites).
 
 ### Moon
 <div align="left">
@@ -58,3 +77,4 @@ I have used free to use textures, music, and video. Sources:
 1. <a href="https://www.solarsystemscope.com/textures/">Solar System Scope</a> <br>
 2. <a href="https://uppbeat.io/">Up Beat</a> <br>
 3. <a href="https://www.videezy.com/">Videezy</a> <br>
+4. <a href="https://www.fontspace.com//">FontSpace</a> <br>
