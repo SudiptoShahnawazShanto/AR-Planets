@@ -9,8 +9,8 @@ public class RotationController : MonoBehaviour
     private Quaternion initialRotation;
 
     private Touch touch;
-    [SerializeField] private float passiveRotateSpeed = 1f;
-    [SerializeField] private float activeRotateSpeed = 2.5f;
+    public float PassiveRotateSpeed = 1f;
+    public float AassiveRotateSpeed = 2.5f;
     private float timeAfterTouch = 0.2f;
 
     private void Start()
@@ -25,8 +25,8 @@ public class RotationController : MonoBehaviour
             touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Moved)
             {
-                float rotationX = touch.deltaPosition.y * activeRotateSpeed * Time.deltaTime;
-                float rotationY = -touch.deltaPosition.x * activeRotateSpeed * Time.deltaTime;
+                float rotationX = touch.deltaPosition.y * AassiveRotateSpeed * Time.deltaTime;
+                float rotationY = -touch.deltaPosition.x * AassiveRotateSpeed * Time.deltaTime;
 
                 planetObject.transform.Rotate(rotationX, rotationY, 0f, Space.World);
             }
@@ -38,7 +38,7 @@ public class RotationController : MonoBehaviour
 
             if (timeAfterTouch >= 0.2)
             {
-                planetObject.transform.Rotate(rotationVector * passiveRotateSpeed * Time.deltaTime);
+                planetObject.transform.Rotate(rotationVector * PassiveRotateSpeed * Time.deltaTime);
             }
         }
     }
