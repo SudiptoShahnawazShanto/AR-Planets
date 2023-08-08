@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
+  resetDuration: 0.5
 --- !u!114 &355432024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Earth
+  resetDuration: 0.5
 --- !u!114 &582086358
 MonoBehaviour:
   m_ObjectHideFlags: 0
