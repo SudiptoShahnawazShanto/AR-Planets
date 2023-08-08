@@ -38,6 +38,25 @@ The object hovers at a fixed spot even if you move away or towards it.
   <br>
 </div>
 
+## Resetting
+You can reloacte the object to the center of the screen by pressing the reset button.
+
+### Position Reset
+The object slowly moves to the target location.
+
+<div align="left">
+  <img src="GitHub/ResetPosition.gif" alt="ResetPosition" width="30%" />
+  <br>
+</div>
+
+### Scale Reset
+While relocating, the object also rescales itself.
+<div align="left">
+  <img src="GitHub/ResetPositionScale.gif" alt="ResetPositionScale" width="30%" />
+  <br>
+</div>
+
+
 ## Objects
 These are the objects (Planets, stars, and satellites).
 
