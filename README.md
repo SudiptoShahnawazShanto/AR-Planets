@@ -9,7 +9,6 @@
 
 This is my first Augmented Reality (AR) project made with Unity 3D.
 
-
 ## Home Screen
 The Home Screen contains several buttons. These represent planets, satellites, and stars.
 
@@ -56,7 +55,6 @@ While relocating, the object also rescales itself.
   <br>
 </div>
 
-
 ## Objects
 These are the objects (Planets, stars, and satellites).
 
@@ -89,7 +87,6 @@ These are the objects (Planets, stars, and satellites).
   <img src="GitHub/Venus.jpg" alt="Venus" width="30%" />
   <br>
 </div>
-
 
 ## Credits
 I have used free to use textures, music, and video. Sources:
