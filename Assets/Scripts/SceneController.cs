@@ -8,7 +8,8 @@ public class SceneController : MonoBehaviour
     private Vector3 previousPosition;
     private Vector3 currentPosition;
     private Vector3 initialLocalScale;
-    
+    private Vector3 initialLocalScaleRing;
+
     private Camera arCamera;
     public float resetDuration = 0.5f;
 
@@ -17,7 +18,10 @@ public class SceneController : MonoBehaviour
         currentPosition = transform.position;
         initialLocalScale = transform.localScale;
 
-        // Find the AR camera in the scene by tag or name
+        ParticleSystem ringParticle = GetComponentInChildren<ParticleSystem>();
+        initialLocalScaleRing = ringParticle.transform.localScale;
+
+        //Find the AR camera in the scene by tag or name
         arCamera = Camera.main;
     }
 
@@ -28,16 +32,16 @@ public class SceneController : MonoBehaviour
 
     public void ResetTransformation()
     {
-        // Store the current position of the planet before moving
+        //Store the current position of the planet before moving
         previousPosition = transform.position;
 
-        // Reset planet's position to the current position
+        //Reset planet's position to the current position
         transform.position = currentPosition;
 
-        // Calculate the target position in front of the camera
+        //Calculate the target position in front of the camera
         float distanceToCamera = Vector3.Distance(transform.position, arCamera.transform.position);
         Vector3 targetPosition = arCamera.transform.position + arCamera.transform.forward * distanceToCamera;
- 
+
         StartCoroutine(MoveToTargetPosition(targetPosition, resetDuration));
         StartCoroutine(ScaleToInitialSize(initialLocalScale, resetDuration));
     }
@@ -63,8 +67,11 @@ public class SceneController : MonoBehaviour
     //Use IEnumertor for implementing coroutine (coroutine ensures smooth transition)
     private IEnumerator ScaleToInitialSize(Vector3 targetScale, float duration)
     {
+        ParticleSystem ringParticle = GetComponentInChildren<ParticleSystem>();
+        Vector3 startingScaleRing = ringParticle.transform.localScale;
+
         float elapsedTime = 0f;
-        Vector3 startingScale = transform.localScale; 
+        Vector3 startingScale = transform.localScale;
 
         while (elapsedTime < duration)
         {
@@ -72,6 +79,7 @@ public class SceneController : MonoBehaviour
             float t = Mathf.Clamp01(elapsedTime / duration);
 
             transform.localScale = Vector3.Lerp(startingScale, targetScale, t);
+            ringParticle.transform.localScale = Vector3.Lerp(startingScaleRing, initialLocalScaleRing, t);
             yield return null; //Keep frame rate smooth by pausing the coroutine for 1 frame
         }
         transform.localScale = targetScale; //Fix the fractional errors

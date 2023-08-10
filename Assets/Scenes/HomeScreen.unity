@@ -1772,6 +1772,7 @@ RectTransform:
   - {fileID: 349526707}
   - {fileID: 614196158}
   - {fileID: 326087110}
+  - {fileID: 2118179074}
   - {fileID: 318966187}
   - {fileID: 1607837259}
   - {fileID: 1824834087}
@@ -1804,6 +1805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
+  resetDuration: 0.5
 --- !u!1 &863723616
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,7 +3162,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 86480932675cc5047a8b43b9281c1680, type: 2}
+  - {fileID: 2100000, guid: fab738b92d7ed4844a36bcd6ff5d7663, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3323,3 +3325,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824834086}
   m_CullTransparentMesh: 1
+--- !u!1 &2118179073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2118179074}
+  - component: {fileID: 2118179078}
+  - component: {fileID: 2118179077}
+  - component: {fileID: 2118179076}
+  - component: {fileID: 2118179075}
+  m_Layer: 0
+  m_Name: SaturnRing2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2118179074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118179073}
+  m_LocalRotation: {x: 0.79124016, y: -0.14845252, z: -0.2120122, w: -0.55403227}
+  m_LocalPosition: {x: -162, y: 215, z: -173}
+  m_LocalScale: {x: 16.1, y: 18.941187, z: 18.941187}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 817044014}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 250, y: 30, z: 0}
+--- !u!114 &2118179075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118179073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16f91c0ace9cb949861a1c6b106d4cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  definedButton: {fileID: 0}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 817044015}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: SwitchScenes
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Saturn
+          m_BoolArgument: 0
+        m_CallState: 2
+  activeColor: {r: 0.46666667, g: 0.46666667, b: 0.46666667, a: 0}
+  passiveColor: {r: 1, g: 1, b: 1, a: 0}
+--- !u!114 &2118179076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118179073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b43242d56f9734e873458b26d9afe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saturnRing: {fileID: 2118179073}
+  rotationVector: {x: 0, y: 0, z: 10}
+  rotateSpeed: 4
+--- !u!23 &2118179077
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118179073}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e05f6a9276909944f92d8139d1b0dd51, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2118179078
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118179073}
+  m_Mesh: {fileID: 4300000, guid: dae84762babb12842877b3e76af8fa7a, type: 2}
