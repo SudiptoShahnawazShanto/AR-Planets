@@ -4,11 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    private ParticleSystem glowParticle;
     public string sceneName;
+
     private Vector3 previousPosition;
     private Vector3 currentPosition;
     private Vector3 initialLocalScale;
-    private Vector3 initialLocalScaleRing;
+    private Vector3 startingPosition;
+    private Vector3 startingScale;
+
+    private Vector3 initialLocalScaleGlow;
+    private Vector3 startingScaleGlow;
+    
 
     private Camera arCamera;
     public float resetDuration = 0.5f;
@@ -18,8 +25,8 @@ public class SceneController : MonoBehaviour
         currentPosition = transform.position;
         initialLocalScale = transform.localScale;
 
-        ParticleSystem ringParticle = GetComponentInChildren<ParticleSystem>();
-        initialLocalScaleRing = ringParticle.transform.localScale;
+        glowParticle = GetComponentInChildren<ParticleSystem>();
+        if (glowParticle != null) initialLocalScaleGlow = glowParticle.transform.localScale;
 
         //Find the AR camera in the scene by tag or name
         arCamera = Camera.main;
@@ -44,13 +51,14 @@ public class SceneController : MonoBehaviour
 
         StartCoroutine(MoveToTargetPosition(targetPosition, resetDuration));
         StartCoroutine(ScaleToInitialSize(initialLocalScale, resetDuration));
+        StartCoroutine(ScaleToInitialSizeGlow(initialLocalScale, resetDuration));
     }
 
     //Use IEnumertor for implementing coroutine (coroutine ensures smooth transition)
     private IEnumerator MoveToTargetPosition(Vector3 targetPosition, float duration)
     {
         float elapsedTime = 0f;
-        Vector3 startingPosition = previousPosition;
+        startingPosition = previousPosition;
 
         while (elapsedTime < duration)
         {
@@ -67,8 +75,23 @@ public class SceneController : MonoBehaviour
     //Use IEnumertor for implementing coroutine (coroutine ensures smooth transition)
     private IEnumerator ScaleToInitialSize(Vector3 targetScale, float duration)
     {
-        ParticleSystem ringParticle = GetComponentInChildren<ParticleSystem>();
-        Vector3 startingScaleRing = ringParticle.transform.localScale;
+        float elapsedTime = 0f;
+        startingScale = transform.localScale;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            transform.localScale = Vector3.Lerp(startingScale, targetScale, t);
+            yield return null; //Keep frame rate smooth by pausing the coroutine for 1 frame
+        }
+        transform.localScale = targetScale; //Fix the fractional errors
+    }
+    
+    private IEnumerator ScaleToInitialSizeGlow(Vector3 targetScale, float duration)
+    {
+        if (glowParticle != null) startingScaleGlow = glowParticle.transform.localScale;
 
         float elapsedTime = 0f;
         Vector3 startingScale = transform.localScale;
@@ -78,10 +101,10 @@ public class SceneController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float t = Mathf.Clamp01(elapsedTime / duration);
 
-            transform.localScale = Vector3.Lerp(startingScale, targetScale, t);
-            ringParticle.transform.localScale = Vector3.Lerp(startingScaleRing, initialLocalScaleRing, t);
+            // Add if (glowParticle != null) to remove the error ;-;
+            if (glowParticle != null) glowParticle.transform.localScale = Vector3.Lerp(startingScaleGlow, initialLocalScaleGlow, t);
             yield return null; //Keep frame rate smooth by pausing the coroutine for 1 frame
         }
-        transform.localScale = targetScale; //Fix the fractional errors
+        if (glowParticle != null) glowParticle.transform.localScale = initialLocalScaleGlow; //Fix the fractional errors
     }
 }
